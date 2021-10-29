@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route,
+	App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
-    return view('layout');
+    return view('welcome');
 });
+*/
+
+Route::resource('login', LoginController::class)->only([
+    'index', 'store'
+]);
+
+Route::resource('login', LoginController::class)->except([
+    'create', 'show', 'edit', 'update', 'destroy'
+]);
