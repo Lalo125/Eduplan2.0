@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route,
-	App\Http\Controllers\LoginController;
+	App\Http\Controllers\LoginController,
+	App\Http\Controllers\ProfesorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,6 @@ Route::resource('login', LoginController::class)->only([
 Route::resource('login', LoginController::class)->except([
     'create', 'show', 'edit', 'update', 'destroy'
 ]);
+
+
+Route::resource('profesores', ProfesorController::class);
