@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request,
+	Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -23,7 +24,7 @@ class LoginController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -38,8 +39,19 @@ class LoginController extends Controller
 			'usuario'     	=> 'required',
 			'password'      => 'required'
 		]);
+		$user		= $request->usuario;
+		$password	= $request->password;
 		
-		//return 'Datos validados';
+		$users = DB::table('usuarios')
+             ->select('usuario_id','user')
+             ->where('user', '=', $user)
+			 ->where('password','=',$password)
+             ->get();
+		
+		//Verificiar que $users tenga datos
+		//Si $users tiene datos hay que crear las sessiones
+		
+		
     }
 
     /**
@@ -50,7 +62,7 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
