@@ -13,8 +13,8 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        $profesor = profesores::paginate(8);
-        return view('profesores.index',['profesores' => $profesor]);
+        $profesores = Profesor::paginate(5);
+        return view('profesores.index',['profesores' => $profesores]);
     }
 
     /**

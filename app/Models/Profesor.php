@@ -20,6 +20,6 @@ class Profesor extends Model
         'RUT_PROF',
         'CORREO_PROF',
         'CONTRASENA_PROF',
-        'TIPO_PROF',
+        'TIPO_PROF'
     ];
 }
