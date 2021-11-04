@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Profesor;
+
 use Illuminate\Http\Request;
 
-class ProfesorController extends Controller
+class EstudianteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        $profesores = Profesor::paginate(7);
+        $estudiante = ::paginate(5);
         return view('profesores.index',['profesores' => $profesores]);
     }
 
