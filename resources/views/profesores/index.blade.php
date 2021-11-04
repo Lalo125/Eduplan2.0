@@ -15,6 +15,20 @@
 		</thead>
 		<tbody>
 	  </tbody>
+	  @foreach ($profesores as $profesor)
+    <tr>
+      <th scope="row">{{$profesor-> PROFESOR_ID}}</th>
+      <td>{{$profesor-> NOMBRE_PROF}}</td>
+      <td>{{$profesor-> APELLIDO1_PROF}}</td>
+      <td>{{$profesor-> APELLIDO2_PROF}}</td>
+      <td>{{$profesor-> RUT_PROF}}</td>
+      <td>{{$profesor-> CORREO_PROF}}</td>
+	  <td>{{$profesor-> CONTRASENA_PROF}}</td>
+	  <td>{{$profesor-> TIPO_PROF}}</td>
+      <td><button type="button" class="btn btn-success">Editar</button></td>
+      <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+    </tr>
+    @endforeach
 	</table>
 	
 @endsection
