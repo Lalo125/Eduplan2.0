@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Estudiantes;
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller
@@ -13,8 +13,8 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        $estudiante = ::paginate(5);
-        return view('profesores.index',['profesores' => $profesores]);
+        $estudiante = estudiantes::paginate(5);
+        return view('estudiante.index',['estudiantes' => $estudiante]);
     }
 
     /**

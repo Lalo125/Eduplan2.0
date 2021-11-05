@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route,
 	App\Http\Controllers\LoginController,
-	App\Http\Controllers\ProfesorController;
+	App\Http\Controllers\ProfesorController,
+    App\Http\Controllers\EstudianteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::resource('login', LoginController::class)->except([
 
 
 Route::resource('profesores', ProfesorController::class);
+
+Route::resource('Estudiantes', EstudianteController::class);
