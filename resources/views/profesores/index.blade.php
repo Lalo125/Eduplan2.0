@@ -14,8 +14,8 @@
 				<th scope="col">Apellido Materno</th>
 				<th scope="col">RUT</th>
 				<th scope="col">Correo</th>
-				<th scope="col">Contraseña</th>
 				<th scope="col">Asignatura</th>
+				<th scope="col">Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,10 +28,19 @@
       <td>{{$profesor-> APELLIDO2_PROF}}</td>
       <td>{{$profesor-> RUT_PROF}}</td>
       <td>{{$profesor-> CORREO_PROF}}</td>
-	  <td>{{$profesor-> CONTRASENA_PROF}}</td>
 	  <td>{{$profesor-> TIPO_PROF}}</td>
-      <td><button type="button" class="btn btn-success">Editar</button></td>
-      <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+	  
+      <td>
+			<form action="{{ route('profesores.destroy', $profesor->PROFESOR_ID) }}" method="POST">
+				<a href="{{ route('profesores.edit', $profesor->PROFESOR_ID) }}" class="btn btn-secondary">Editar</a>
+				@csrf
+				@method('DELETE')
+				<button type="submit" class="btn btn-warning">Eliminar</button>
+			</form>
+		</td>
+	  
+	  
+	  
     </tr>
     @endforeach
 	</table>
