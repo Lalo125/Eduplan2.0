@@ -2,7 +2,7 @@
 @section('title','Listado de profesores')
 @section('content')
 	
-	<h2>Listado de profesores</h2>
+	<h2>Listado de Profesores</h2>
 	
 	<a class="btn btn-success" href="{{ url('/profesores/create') }}" role="button">Nuevo/a profesor</a>
 	<table class="table">
@@ -14,7 +14,6 @@
 				<th scope="col">Apellido Materno</th>
 				<th scope="col">RUT</th>
 				<th scope="col">Correo</th>
-				<th scope="col">Contraseña</th>
 				<th scope="col">Asignatura</th>
 			</tr>
 		</thead>
@@ -28,7 +27,6 @@
       <td>{{$profesor-> APELLIDO2_PROF}}</td>
       <td>{{$profesor-> RUT_PROF}}</td>
       <td>{{$profesor-> CORREO_PROF}}</td>
-	  <td>{{$profesor-> CONTRASENA_PROF}}</td>
 	  <td>{{$profesor-> TIPO_PROF}}</td>
       <td><button type="button" class="btn btn-success">Editar</button></td>
       <td><button type="button" class="btn btn-danger">Eliminar</button></td>

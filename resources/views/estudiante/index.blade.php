@@ -12,18 +12,18 @@
 				<th scope="col">Nombre</th>
 				<th scope="col">Apellido Paterno</th>
 				<th scope="col">Apellido Materno</th>
-				<th scope="col">RUT</th>
+				<th scope="col">Rut</th>
 				<th scope="col">Correo</th>
-				<th scope="col">Contraseña</th>
-				<th scope="col">Asignatura</th>
+				<th scope="col">Nota</th>
+				<th scope="col">Promedio</th>
 			</tr>
 		</thead>
+		</table>
 		<tbody>
-	  </tbody>
+	
 	  @foreach ($estudiantes as $estudiante)
     <tr>
-      <th scope="row">{{$profesor-> PROFESOR_ID}}</th>
-      <td>{{$estudiante-> ESTUDIANTE_ID	}}</td>
+      <th scope="row">{{$estudiante-> ESTUDIANTES_ID}}</th>
       <td>{{$estudiante-> CURSO_ID}}</td>
       <td>{{$estudiante-> NOMBRE_EST}}</td>
       <td>{{$estudiante-> APELLIDO1_EST}}</td>
@@ -34,8 +34,9 @@
       <td>{{$estudiante-> TIPO_EST}}</td>
       <td><button type="button" class="btn btn-success">Editar</button></td>
       <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-    </tr>
+    </tr>	
     @endforeach
-	</table>
+	
+    </tbody>	
 	
 @endsection
