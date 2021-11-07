@@ -27,7 +27,7 @@
       <td>{{$profesor-> APELLIDO1_PROF}}</td>
       <td>{{$profesor-> APELLIDO2_PROF}}</td>
       <td>{{$profesor-> RUT_PROF}}</td>
-      <td>{{$profesor-> CORREO_PROF}}</td>
+      <td>{{$profesor-> usuario->USU_CORREO}}</td>
 	  <td>{{$profesor-> TIPO_PROF}}</td>
 	  
       <td>

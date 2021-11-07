@@ -30,10 +30,14 @@
       <td>{{$estudiante-> APELLIDO2_EST}}</td>
 	  <td>{{$estudiante-> RUT_EST}}</td>
 	  <td>{{$estudiante-> CORREO_EST}}</td>
-      <td>{{$estudiante-> CONTRASENA_EST}}</td>
+
       <td>{{$estudiante-> TIPO_EST}}</td>
-      <td><button type="button" class="btn btn-success">Editar</button></td>
-      <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+      <td> 
+				<a href="{{ route('estudiantes.edit', $estudiante->ESTUDIANTES_ID) }}" class="btn btn-secondary">Editar</a>
+				@csrf
+				<button type="submit" class="btn btn-warning">Eliminar</button>
+			</form>
+       </td>
     </tr>	
     	@endforeach
 		

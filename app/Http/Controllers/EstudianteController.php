@@ -68,7 +68,22 @@ class EstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {  $request->validate([
+        "ESTUDIANTE_ID"     => 'required|unique:estudiantes',
+        "NOMBRE_EST"     => 'required|unique:estudiantes',
+        "APELLIDO1_EST"  => 'required|unique:estudiantes',
+        "APELLIDO2_EST"  => 'required|unique:estudiantes',
+        "RUT_EST"        => 'required|numeric' ,
+      
+        ]);
+        db($request);exit();
+        $estudiante = new estudiantes();
+        $estudiante->ESTUDIANTE_ID       =null;
+        $estudiante->NOMBRE_EST          =$request->NOMBRE_EST;
+        $estudiante->APELLIDO1_EST       =$request->APELLIDO1_EST;
+        $estudiante->APELLIDO2_EST       =$request->APELLIDO2_EST;
+        $estudiante->RUT_EST             =$request->RUT_EST;
+
         //
     }
 

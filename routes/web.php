@@ -32,4 +32,4 @@ Route::resource('login', LoginController::class)->except([
 
 Route::resource('profesores', ProfesorController::class);
 
-Route::resource('estudiantes', EstudianteController::class);
+Route::resource('Estudiantes', EstudianteController::class);
