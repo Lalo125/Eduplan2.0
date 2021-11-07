@@ -20,6 +20,7 @@
 		</thead>
 		</table>
 		<tbody>
+<<<<<<< HEAD
 	
 	  @foreach ($estudiantes as $estudiante)
     <tr>
@@ -35,6 +36,24 @@
       <td><button type="button" class="btn btn-success">Editar</button></td>
       <td><button type="button" class="btn btn-danger">Eliminar</button></td>
     </tr>	
+=======
+	  </tbody>
+	@foreach ($estudiantes as $estudiante)
+		<tr>
+			<th scope="row">{{$profesor-> PROFESOR_ID}}</th>
+			<td>{{$estudiante-> ESTUDIANTE_ID	}}</td>
+			<td>{{$estudiante-> CURSO_ID}}</td>
+			<td>{{$estudiante-> NOMBRE_EST}}</td>
+		    <td>{{$estudiante-> APELLIDO1_EST}}</td>
+			<td>{{$estudiante-> APELLIDO2_EST}}</td>
+			<td>{{$estudiante-> RUT_EST}}</td>
+			<td>{{$estudiante-> CORREO_EST}}</td>
+		    <td>{{$estudiante-> CONTRASENA_EST}}</td>
+			<td>{{$estudiante-> TIPO_EST}}</td>
+			<td><button type="button" class="btn btn-success">Editar</button></td>
+			<td><button type="button" class="btn btn-danger">Eliminar</button></td>
+		</tr>
+>>>>>>> 807ba7348dd8c3ad746dbbd83286d0fab93c5ece
     @endforeach
 	
     </tbody>	

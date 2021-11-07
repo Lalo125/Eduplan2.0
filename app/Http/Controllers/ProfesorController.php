@@ -24,7 +24,7 @@ class ProfesorController extends Controller
      */
     public function create()
     {
-        //
+        return view('profesores.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class ProfesorController extends Controller
      */
     public function edit($id)
     {
-        //
+        return 'Edit '.$id;
     }
 
     /**
@@ -80,6 +80,6 @@ class ProfesorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 'Destroy '.$id;
     }
 }
