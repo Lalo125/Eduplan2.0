@@ -2,7 +2,7 @@
 @section('title','Listado de profesores')
 @section('content')
 	
-	<h2>Listado de profesores</h2>
+	<h2>Listado de Profesores</h2>
 	
 	<a class="btn btn-success" href="{{ url('/profesores/create') }}" role="button">Nuevo profesor</a>
 	<table class="table">
@@ -30,6 +30,7 @@
 	 
 	  
       <td>
+		  
 			<form action="{{ route('profesores.destroy', $profesor->PROFESOR_ID) }}" method="POST">
 				<a href="{{ route('profesores.edit', $profesor->PROFESOR_ID) }}" class="btn btn-secondary">Editar</a>
 				@csrf

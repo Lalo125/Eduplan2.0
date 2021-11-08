@@ -28,4 +28,6 @@ Route::resource('profesores', ProfesorController::class)->only([
 ]);
 
 
-Route::resource('estudiantes', EstudianteController::class);
+Route::resource('profesores', ProfesorController::class);
+
+Route::resource('Estudiantes', EstudianteController::class);

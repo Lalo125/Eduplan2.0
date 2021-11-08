@@ -1,6 +1,8 @@
 @extends('layout.layout')
-@section('title','Nuevo')
+@section('title','Nuevo Profesor')
 @section('content')
+	<h3>Nuevo Profesor<h3>
+	
 	<h3>Crear nuevo Profesor</h3>
 	
 	<form action="{{ route('profesores.store') }}" method="POST" class="row g-3" enctype="multipart/form-data">

@@ -12,30 +12,34 @@
 				<th scope="col">Nombre</th>
 				<th scope="col">Apellido Paterno</th>
 				<th scope="col">Apellido Materno</th>
-				<th scope="col">RUT</th>
+				<th scope="col">Rut</th>
 				<th scope="col">Correo</th>
-				<th scope="col">Contraseña</th>
-				<th scope="col">Asignatura</th>
+				<th scope="col">Nota</th>
+				<th scope="col">Promedio</th>
 			</tr>
 		</thead>
+		</table>
 		<tbody>
-	  </tbody>
-	@foreach ($estudiantes as $estudiante)
-		<tr>
-			<th scope="row">{{$profesor-> PROFESOR_ID}}</th>
-			<td>{{$estudiante-> ESTUDIANTE_ID	}}</td>
-			<td>{{$estudiante-> CURSO_ID}}</td>
-			<td>{{$estudiante-> NOMBRE_EST}}</td>
-		    <td>{{$estudiante-> APELLIDO1_EST}}</td>
-			<td>{{$estudiante-> APELLIDO2_EST}}</td>
-			<td>{{$estudiante-> RUT_EST}}</td>
-			<td>{{$estudiante-> CORREO_EST}}</td>
-		    <td>{{$estudiante-> CONTRASENA_EST}}</td>
-			<td>{{$estudiante-> TIPO_EST}}</td>
-			<td><button type="button" class="btn btn-success">Editar</button></td>
-			<td><button type="button" class="btn btn-danger">Eliminar</button></td>
-		</tr>
-    @endforeach
-	</table>
-	
+			
+	  @foreach ($estudiantes as $estudiante)
+    <tr>
+      <th scope="row">{{$estudiante-> ESTUDIANTES_ID}}</th>
+      <td>{{$estudiante-> CURSO_ID}}</td>
+      <td>{{$estudiante-> NOMBRE_EST}}</td>
+      <td>{{$estudiante-> APELLIDO1_EST}}</td>
+      <td>{{$estudiante-> APELLIDO2_EST}}</td>
+	  <td>{{$estudiante-> RUT_EST}}</td>
+	  <td>{{$estudiante-> CORREO_EST}}</td>
+      <td>{{$estudiante-> TIPO_EST}}</td>
+      <td> 
+				<a href="{{ url('Estudiantes', $estudiante->ESTUDIANTES_ID) }}" class="btn btn-secondary">Editar</a>
+				@csrf
+				<button type="submit" class="btn btn-warning">Eliminar</button>
+			</form>
+       </td>
+    </tr>	
+    	@endforeach
+		
+    </tbody>		
+
 @endsection
