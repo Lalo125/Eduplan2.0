@@ -27,10 +27,11 @@
       <td>{{$profesor-> APELLIDO1_PROF}}</td>
       <td>{{$profesor-> APELLIDO2_PROF}}</td>
       <td>{{$profesor-> RUT_PROF}}</td>
-      <td>{{$profesor-> usuario->USU_CORREO}}</td>
 	  <td>{{$profesor-> TIPO_PROF}}</td>
+	  <td>{{$profesor-> Asignatura}}</td>
 	  
       <td>
+		  
 			<form action="{{ route('profesores.destroy', $profesor->PROFESOR_ID) }}" method="POST">
 				<a href="{{ route('profesores.edit', $profesor->PROFESOR_ID) }}" class="btn btn-secondary">Editar</a>
 				@csrf
