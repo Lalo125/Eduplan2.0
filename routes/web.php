@@ -21,14 +21,7 @@ Route::get('/', function () {
 });
 */
 
-Route::resource('login', LoginController::class)->only([
-    'index', 'store'
-]);
-
-Route::resource('login', LoginController::class)->except([
-    'create', 'show', 'edit', 'update', 'destroy'
-]);
-
+Route::resource('login', LoginController::class);
 
 Route::resource('profesores', ProfesorController::class);
 

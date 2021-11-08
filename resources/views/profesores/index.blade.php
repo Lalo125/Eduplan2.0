@@ -13,8 +13,7 @@
 				<th scope="col">Apellido Paterno</th>
 				<th scope="col">Apellido Materno</th>
 				<th scope="col">RUT</th>
-				<th scope="col">Correo</th>
-				<th scope="col">Asignatura</th>
+				
 				<th scope="col">Acciones</th>
 			</tr>
 		</thead>
@@ -27,8 +26,8 @@
       <td>{{$profesor-> APELLIDO1_PROF}}</td>
       <td>{{$profesor-> APELLIDO2_PROF}}</td>
       <td>{{$profesor-> RUT_PROF}}</td>
-      <td>{{$profesor-> CORREO_PROF}}</td>
-	  <td>{{$profesor-> TIPO_PROF}}</td>
+     
+	 
 	  
       <td>
 			<form action="{{ route('profesores.destroy', $profesor->PROFESOR_ID) }}" method="POST">

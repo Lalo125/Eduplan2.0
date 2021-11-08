@@ -30,7 +30,7 @@
 					  <a class="nav-link active" aria-current="page" href="#">Profesores</a>
 					</li>
 					<li class="nav-item">
-					  <a class="nav-link" href="#">Alumnos</a>
+					  <a class="nav-link"href="{{url('/estudiantes')}}" >Alumnos</a>
 				  </li>
 				  </ul>
 				  <form class="d-flex">
