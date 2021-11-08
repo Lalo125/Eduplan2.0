@@ -23,6 +23,9 @@ Route::get('/', function () {
 
 Route::resource('login', LoginController::class);
 
-Route::resource('profesores', ProfesorController::class);
+Route::resource('profesores', ProfesorController::class)->only([
+    'index', 'create', 'store', 'edit', 'update', 'destroy'
+]);
+
 
 Route::resource('estudiantes', EstudianteController::class);

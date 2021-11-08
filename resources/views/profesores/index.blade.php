@@ -4,7 +4,7 @@
 	
 	<h2>Listado de profesores</h2>
 	
-	<a class="btn btn-success" href="{{ url('/profesores/create') }}" role="button">Nuevo/a profesor</a>
+	<a class="btn btn-success" href="{{ url('/profesores/create') }}" role="button">Nuevo profesor</a>
 	<table class="table">
 		<thead>
 			<tr>
@@ -13,8 +13,8 @@
 				<th scope="col">Apellido Paterno</th>
 				<th scope="col">Apellido Materno</th>
 				<th scope="col">RUT</th>
-				
 				<th scope="col">Acciones</th>
+			
 			</tr>
 		</thead>
 		<tbody>

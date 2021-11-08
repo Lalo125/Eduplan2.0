@@ -23,6 +23,7 @@ class ProfesorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
         return view('profesores.create');
     }
@@ -35,7 +36,28 @@ class ProfesorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     $request->validate([
+        'NOMBRE_PROF'    =>'required',
+        'APELLIDO1_PROF' =>'required',
+        'APELLIDO2_PROF' =>'required',
+        'RUT_PROF'       =>'required',  
+
+     ]) ;
+     //dd($request);exit();
+     $profesor = new Profesor();
+     
+     $profesor ->PROFESOR_ID    = null;
+     $profesor-> NOMBRE_PROF    = $request-> NOMBRE_PROF;
+     $profesor-> APELLIDO1_PROF = $request-> APELLIDO1_PROF;
+     $profesor-> APELLIDO2_PROF = $request-> APELLIDO2_PROF;
+     $profesor-> RUT_PROF       = $request-> RUT_PROF;
+
+     $respuesta = $profesor->save();
+        if($respuesta){
+            return redirect('/profesores')->with('success', 'Profesor registrado con exito');
+        }else{
+            return redirect('/profesores/create')->with('warning', 'Ocurrio un error');
+        }
     }
 
     /**
