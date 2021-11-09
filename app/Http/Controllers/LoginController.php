@@ -36,18 +36,27 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-			'usuario'     	=> 'required',
+			'usuario'     	=> 'required|email',
 			'password'      => 'required'
 		]);
 		$user		= $request->usuario;
 		$password	= $request->password;
 		
 		$users = DB::table('usuarios')
-             ->select('usuario_id','user')
-             ->where('user', '=', $user)
-			 ->where('password','=',$password)
-             ->get();
-		
+             ->select('USUARIO_ID','USERNAME')
+             ->where('USERNAME', '=', $user)
+			 ->where('PASSWORD','=',$password)
+             ->get()
+             ->first();
+             //dd($users);exit();
+             if ($users!=''){
+                if ($users->USUARIO_ID > 0 and $users->USERNAME!=''){
+                    return redirect('/profesores')->with('success', 'BIENVENIDO!!!');
+                }else{ 
+                    return redirect('/login.login')->with('success', 'no se cuentra el usuario');
+                }
+            }  
+   
 		//Verificiar que $users tenga datos
 		//Si $users tiene datos hay que crear las sessiones
 		
