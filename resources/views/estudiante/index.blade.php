@@ -13,7 +13,6 @@
 				<th scope="col">Apellido Paterno</th>
 				<th scope="col">Apellido Materno</th>
 				<th scope="col">Rut</th>
-				<th scope="col">Correo</th>
 				<th scope="col">Nota</th>
 				<th scope="col">Promedio</th>
 			</tr>
@@ -29,17 +28,26 @@
       <td>{{$estudiante-> APELLIDO1_EST}}</td>
       <td>{{$estudiante-> APELLIDO2_EST}}</td>
 	  <td>{{$estudiante-> RUT_EST}}</td>
-	  <td>{{$estudiante-> CORREO_EST}}</td>
-      <td>{{$estudiante-> TIPO_EST}}</td>
+	  <td>{{$estudiante-> PROMEDIO}}</td>
+
+
+
+
       <td> 
-				<a href="{{ url('Estudiantes', $estudiante->ESTUDIANTES_ID) }}" class="btn btn-secondary">Editar</a>
+
+	       <form action="{{ route('estudiantes.destroy', $estudiante->ESTUDIANTE_ID) }}" method="POST">
+	            <a href="{{ route('estudiantes.edit', $estudiante->ESTUDIANTE_ID) }}" class="btn btn-secondary">Editar</a>
 				@csrf
+				@method('DELETE')
 				<button type="submit" class="btn btn-warning">Eliminar</button>
-			</form>
+	       </form>
        </td>
+
+
+
     </tr>	
     	@endforeach
-		
+
     </tbody>		
 
 @endsection

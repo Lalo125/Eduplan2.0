@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EstudianteController extends Controller
 {
@@ -22,9 +23,22 @@ class EstudianteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+         public function create()
+
+        {
+            $usuarios = DB::table('usuarios')
+                ->select('USUARIO_ID', 'USERNAME')
+                ->orderBy('USERNAME')
+                ->get();
+            
+            $cursos = DB::table('cursos')
+                ->select('CURSO_ID', 'NOMBRE_CURSO')
+                ->orderBy('NOMBRE_CURSO')
+                ->get();
+
+                
+                
+            return view('estudiantes.create',['usuarios' => $usuarios,'cursos'=>$cursos]);
     }
 
     /**
@@ -95,6 +109,13 @@ class EstudianteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $respuesta = Estudiante::destroy($id);
+		
+		if($respuesta){
+			return redirect('/estudiantes')->with('success', 'Estudiante eliminado con éxito');
+		}else{
+			return redirect('/estudiantes')->with('warning', 'Ocurrio un error');
+		}
+		
     }
 }

@@ -152,7 +152,7 @@ class ProfesorController extends Controller
          $profesor-> APELLIDO2_PROF    = $request-> APELLIDO2_PROF;
          $profesor-> RUT_PROF          = $request-> RUT_PROF;
          $profesor-> NOMBRE_PROF       = $request-> NOMBRE_PROF;
-            dd($profesor);exit();
+            //dd($profesor);exit();
          $respuesta = Profesor::where('PROFESOR_ID', $id)
          ->update(
              ['ASIGNATURA_ID'  	       =>$profesor->ASIGNATURA_ID,
@@ -178,6 +178,14 @@ class ProfesorController extends Controller
      */
     public function destroy($id)
     {
-        return 'Destroy '.$id;
+       
+		 $respuesta = Profesor::destroy($id);
+		
+		if($respuesta){
+			return redirect('/profesores')->with('success', 'Profesor eliminado con éxito');
+		}else{
+			return redirect('/profesores')->with('warning', 'Ocurrio un error');
+		}
+		
     }
 }

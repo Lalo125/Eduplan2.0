@@ -6,7 +6,7 @@
 	
 	<form action="{{ route('profesores.update',$profesor -> PROFESOR_ID) }}" method="POST" class="row g-3" enctype="multipart/form-data">
 		@csrf
-        @method('DELETE')
+        @method('PUT')
 		<select id="USUARIO_ID" class="form-select" name="USUARIO_ID">
 			<option value="" selected>Seleccione...</option>
 			@foreach($usuarios as $usuario)
