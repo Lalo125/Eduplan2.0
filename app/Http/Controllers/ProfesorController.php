@@ -152,7 +152,7 @@ class ProfesorController extends Controller
          $profesor-> APELLIDO2_PROF    = $request-> APELLIDO2_PROF;
          $profesor-> RUT_PROF          = $request-> RUT_PROF;
          $profesor-> NOMBRE_PROF       = $request-> NOMBRE_PROF;
-     
+            dd($profesor);exit();
          $respuesta = Profesor::where('PROFESOR_ID', $id)
          ->update(
              ['ASIGNATURA_ID'  	       =>$profesor->ASIGNATURA_ID,
@@ -166,7 +166,7 @@ class ProfesorController extends Controller
          if($respuesta){
 			return redirect('/profesores')->with('success', 'profesor actualizado con éxito');
 		}else{
-			return redirect('/categorias')->with('warning', 'No se pudo actualizar este profesor');
+			return redirect('/profesores')->with('warning', 'No se pudo actualizar este profesor');
 		}
     }
 

@@ -4,8 +4,9 @@
 	
 	<h3>Editar Profesor</h3>
 	
-	<form action="{{ route('profesores.store',$profesor -> PROFESOR_ID) }}" method="POST" class="row g-3" enctype="multipart/form-data">
+	<form action="{{ route('profesores.update',$profesor -> PROFESOR_ID) }}" method="POST" class="row g-3" enctype="multipart/form-data">
 		@csrf
+        @method('DELETE')
 		<select id="USUARIO_ID" class="form-select" name="USUARIO_ID">
 			<option value="" selected>Seleccione...</option>
 			@foreach($usuarios as $usuario)
