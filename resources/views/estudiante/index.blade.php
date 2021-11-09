@@ -4,7 +4,7 @@
 	
 	<h2>Listado de Estudiantes</h2>
 	
-	<a class="btn btn-success" href="{{ url('/Estudiantes/create') }}" role="button">Nuevo/a estudiante</a>
+	<a class="btn btn-success" href="{{ url('/estudiantes/create') }}" role="button">Nuevo/a estudiante</a>
 	<table class="table">
 		<thead>
 			<tr>

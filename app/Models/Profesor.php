@@ -14,12 +14,11 @@ class Profesor extends Model
     //Cambiar por atributos de la tabla
     protected $fillable = [
         'PROFESOR_ID',
+        'USUARIO_ID',
+        'ASIGNATURA_ID',
         'NOMBRE_PROF',
         'APELLIDO1_PROF',
         'APELLIDO2_PROF',
         'RUT_PROF',
-        'CORREO_PROF',
-        'CONTRASENA_PROF',
-        'TIPO_PROF'
     ];
 }

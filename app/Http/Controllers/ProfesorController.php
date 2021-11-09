@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Profesor;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request,
+Illuminate\Support\Facades\DB;
 
 class ProfesorController extends Controller
 {
@@ -25,7 +26,18 @@ class ProfesorController extends Controller
     public function create()
 
     {
-        return view('profesores.create');
+        $usuarios = DB::table('usuarios')
+            ->select('USUARIO_ID', 'USERNAME')
+			->orderBy('USERNAME')
+            ->get();
+        
+        $asignaturas = DB::table('asignaturas')
+            ->select('ASIGNATURA_ID', 'NOMBRE_ASIG')
+			->orderBy('NOMBRE_ASIG')
+            ->get();
+            
+        return view('profesores.create',['usuarios' => $usuarios,'asignaturas'=>$asignaturas]);
+        
     }
 
     /**
@@ -37,20 +49,29 @@ class ProfesorController extends Controller
     public function store(Request $request)
 {
     $request->validate([
+        
+    
+       'USUARIO_ID'     =>'required',
+       'ASIGNATURA_ID'  =>'required',  
        'NOMBRE_PROF'    =>'required',
        'APELLIDO1_PROF' =>'required',
        'APELLIDO2_PROF' =>'required',
-       'RUT_PROF'       =>'required',  
+       'RUT_PROF'       =>'required', 
+      
+ 
 
     ]) ;
     //dd($request);exit();
     $profesor = new Profesor();
     
-    $profesor ->PROFESOR_ID    = null;
-    $profesor-> NOMBRE_PROF    = $request-> NOMBRE_PROF;
-    $profesor-> APELLIDO1_PROF = $request-> APELLIDO1_PROF;
-    $profesor-> APELLIDO2_PROF = $request-> APELLIDO2_PROF;
-    $profesor-> RUT_PROF       = $request-> RUT_PROF;
+    $profesor ->PROFESOR_ID       = null;
+    $profesor-> ASIGNATURA_ID     = $request-> ASIGNATURA_ID;
+    $profesor-> USUARIO_ID        = $request-> USUARIO_ID;
+    $profesor-> APELLIDO1_PROF    = $request-> APELLIDO1_PROF;
+    $profesor-> APELLIDO2_PROF    = $request-> APELLIDO2_PROF;
+    $profesor-> RUT_PROF          = $request-> RUT_PROF;
+    $profesor-> NOMBRE_PROF       = $request-> NOMBRE_PROF;
+
 
     $respuesta = $profesor->save();
        if($respuesta){
@@ -80,7 +101,23 @@ class ProfesorController extends Controller
      */
     public function edit($id)
     {
-        return 'Edit '.$id;
+
+            $profesor = Profesor::where('PROFESOR_ID', $id)->first();
+            
+    $usuarios = DB::table('usuarios')
+            ->select('USUARIO_ID','USERNAME')
+            ->get() ;
+
+            $asignaturas = DB::table('asignaturas')
+            ->select('ASIGNATURA_ID','NOMBRE_ASIG')
+            ->get() ;
+
+
+        return view ('profesores.edit',
+        ['profesor'=>$profesor,
+         'usuarios'=>$usuarios,
+         'asignaturas'=>$asignaturas
+         ]);
     }
 
     /**
@@ -90,9 +127,47 @@ class ProfesorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+        
+    
+            'USUARIO_ID'     =>'required',
+            'ASIGNATURA_ID'  =>'required',  
+            'NOMBRE_PROF'    =>'required',
+            'APELLIDO1_PROF' =>'required',
+            'APELLIDO2_PROF' =>'required',
+            'RUT_PROF'       =>'required', 
+           
+      
+     
+         ]) ;
+         //dd($request);exit();
+         $profesor = new Profesor();
+         
+         $profesor ->PROFESOR_ID       = null;
+         $profesor-> ASIGNATURA_ID     = $request-> ASIGNATURA_ID;
+         $profesor-> USUARIO_ID        = $request-> USUARIO_ID;
+         $profesor-> APELLIDO1_PROF    = $request-> APELLIDO1_PROF;
+         $profesor-> APELLIDO2_PROF    = $request-> APELLIDO2_PROF;
+         $profesor-> RUT_PROF          = $request-> RUT_PROF;
+         $profesor-> NOMBRE_PROF       = $request-> NOMBRE_PROF;
+     
+         $respuesta = Profesor::where('PROFESOR_ID', $id)
+         ->update(
+             ['ASIGNATURA_ID'  	       =>$profesor->ASIGNATURA_ID,
+              'USUARIO_ID'		       =>$profesor->USUARIO_ID,
+              'APELLIDO1_PROF'	       =>$profesor->APELLIDO1_PROF,
+              'APELLIDO2_PROF'	       =>$profesor->APELLIDO2_PROF,
+              'RUT_PROF'		       =>$profesor->RUT_PROF,
+              'NOMBRE_PROF'            =>$profesor->NOMBRE_PROF,
+
+         ]);
+         if($respuesta){
+			return redirect('/profesores')->with('success', 'profesor actualizado con éxito');
+		}else{
+			return redirect('/categorias')->with('warning', 'No se pudo actualizar este profesor');
+		}
     }
 
     /**

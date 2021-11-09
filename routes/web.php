@@ -23,11 +23,7 @@ Route::get('/', function () {
 
 Route::resource('login', LoginController::class);
 
-Route::resource('profesores', ProfesorController::class)->only([
-    'index', 'create', 'store', 'edit', 'update', 'destroy'
-]);
-
-
 Route::resource('profesores', ProfesorController::class);
 
-Route::resource('Estudiantes', EstudianteController::class);
+
+Route::resource('estudiantes', EstudianteController::class);
