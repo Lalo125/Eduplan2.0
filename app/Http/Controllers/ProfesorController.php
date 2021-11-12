@@ -14,8 +14,12 @@ class ProfesorController extends Controller
      */
     public function index()
     {
-        $profesores = Profesor::paginate(7);
-        return view('profesores.index',['profesores' => $profesores]);
+		if( session()->exists('usuario_id') and session()->exists('username') ){
+			$profesores = Profesor::paginate(7);
+			return view('profesores.index',['profesores' => $profesores]);
+		}else{
+			return redirect('/login')->with('warning', 'no se cuentra el usuario');
+		}
     }
 
     /**

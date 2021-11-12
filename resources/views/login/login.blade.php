@@ -32,6 +32,20 @@
 <body>
 
 	<div class="container" id='login'>
+	
+						<!-- Para mensajes de alerta -->
+			@if (session('warning'))
+				<div class="alert alert-warning">
+				{{ session('warning') }}
+				</div>
+			@endif
+			
+			<!-- Para mensajes de 'éxito -->
+			@if (session('success'))
+				<div class="alert alert-success">
+				{{ session('success') }}
+				</div>
+			@endif
 			<!-- Para validación de formularios -->
 			@if ($errors->any())
 				<div class="alert alert-danger">

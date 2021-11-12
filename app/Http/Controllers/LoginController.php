@@ -24,7 +24,10 @@ class LoginController extends Controller
      */
     public function create()
     {
-        
+        if( session()->exists('usuario_id') and session()->exists('username') ){
+			session()->flush();
+			return redirect('/login')->with('warning', 'no se cuentra el usuario');
+		}
     }
 
     /**
@@ -49,13 +52,21 @@ class LoginController extends Controller
              ->get()
              ->first();
              //dd($users);exit();
-             if ($users!=''){
+             if ($users != ''){
+				 
                 if ($users->USUARIO_ID > 0 and $users->USERNAME!=''){
+					
+					session(['usuario_id' => $users->USUARIO_ID,'username'=>$users->USERNAME]);
+					//echo session()->get('usuario_id').' '.session()->get('username');exit();
+					
                     return redirect('/profesores')->with('success', 'BIENVENIDO!!!');
                 }else{ 
-                    return redirect('/login.login')->with('success', 'no se cuentra el usuario');
+                    return redirect('/login')->with('warning', 'no se cuentra el usuario');
+					//echo 'fail';
                 }
-            }  
+            }else{
+				return redirect('/login')->with('warning', 'no se cuentra el usuario');
+			}
    
 		//Verificiar que $users tenga datos
 		//Si $users tiene datos hay que crear las sessiones
@@ -105,6 +116,6 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
